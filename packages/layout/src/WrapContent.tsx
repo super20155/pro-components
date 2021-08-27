@@ -10,15 +10,17 @@ const WrapContent: React.FC<{
   style?: CSSProperties;
   location?: any;
   contentHeight?: number | string;
+  ErrorBoundary?: any;
 }> = (props) => {
   const { style, className, children } = props;
+  const ErrorComponent = props.ErrorBoundary || ErrorBoundary;
   return (
     <ConfigProviderWrap>
-      <ErrorBoundary>
+      <ErrorComponent>
         <Layout.Content className={className} style={style}>
           {children}
         </Layout.Content>
-      </ErrorBoundary>
+      </ErrorComponent>
     </ConfigProviderWrap>
   );
 };
